@@ -11,6 +11,8 @@ from skimage.feature import graycomatrix, graycoprops  # ✅ 最新版対応
 
 # === 1. 特徴量抽出関数 ===
 def extract_features(image_path):
+    print(f"[INFO] 処理中の画像: {image_path}")  # ★ 追加（どのファイルを処理しているか表示）
+
     img = cv2.imread(image_path)
     if img is None:
         print(f"[Error] 画像を読み込めませんでした: {image_path}")
@@ -106,6 +108,8 @@ print(confusion_matrix(y_test, y_pred))
 
 # === 4. 新規画像の分類例 ===
 def predict_image(image_path):
+    print(f"[PREDICT] 分類対象: {image_path}")  # ★ 追加（新規画像分類のときに表示）
+    
     feats = extract_features(image_path)
     if feats is None:
         return "No cell group detected"
